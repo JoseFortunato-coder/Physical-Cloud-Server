@@ -12,8 +12,9 @@ wss.on('connection', (ws) => {
     let ate = 999999;
       let codigo = Math.floor(Math.random() * (ate - de + 1)) + de;
        clientes.set(codigo, ws);
+
+       ws.send(JSON.stringify({ type: "codigo-gerado", codigo: codigo }));
        
-       console.log(`Código gerado: ${codigo}`);
       
     }
     console.log(`Received message: ${message}`);
