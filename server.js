@@ -14,6 +14,16 @@ wss.on('connection', (ws) => {
        clientes.set(codigo, ws);
       ws.send(JSON.stringify({ type: "codigo-gerado", codigo: codigo }));   
       
+    }else if (dados.type === "conectar") {
+    const clienteServidor = clientes.get(dados.codigo);
+    ws.send(JSON.stringify({ type: "codigo-recebido", codigo: dados.codigo }));
+      if (clienteServidor) {
+        ws.send(JSON.stringify({ type: "conectado" ,sucesso: true, mensagem: "Conexão estabelecida com sucesso!" }));
+         clienteServidor.send(JSON.stringify({ type: "dispositivo-conectou" }));
+      }
+        if(clienteServidor === undefined){
+          ws.send(JSON.stringify({ type: "erro" , sucesso: false, mensagem: "Código inválido" }));
+        }
     }
     console.log(`Received message: ${message}`);
   });
