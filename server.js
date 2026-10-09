@@ -5,7 +5,7 @@ const server = http.createServer((req, res) => {
   res.end('Server Ping OK');
 });
 const PORT = process.env.PORT || 3000;
-const wss = new WebSocket.Server({ port: server });
+const wss = new WebSocket.Server({ server: server });
 const clientes = new Map(); 
 
 
@@ -36,4 +36,6 @@ wss.on('connection', (ws) => {
   });
 });
 console.log('WebSocket server is running on ws://localhost:3000');
-console.log(`WebSocket server is running on port ${PORT}`);
+server.listen(PORT, () => {
+  console.log(`WebSocket Server rodando na porta ${PORT}`);
+});
