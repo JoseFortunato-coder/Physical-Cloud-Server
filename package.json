@@ -1,10 +1,10 @@
 {
   "name": "physical-cloud-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "WebSocket Server para Physical Cloud",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +14,6 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/JoseFortunato-coder/Physical-Cloud-Server/issues"
-  },
-  "homepage": "https://github.com/JoseFortunato-coder/Physical-Cloud-Server#readme",
   "dependencies": {
     "ws": "^8.21.3"
   }

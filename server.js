@@ -1,7 +1,13 @@
 const WebSocket = require('ws');
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Server Ping OK');
+});
 const PORT = process.env.PORT || 3000;
-const wss = new WebSocket.Server({ port: PORT });
+const wss = new WebSocket.Server({ port: server });
 const clientes = new Map(); 
+
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
